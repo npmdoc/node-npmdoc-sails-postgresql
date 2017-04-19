@@ -1,4 +1,7 @@
-# api documentation for  [sails-postgresql (v0.11.4)](https://github.com/balderdashy/sails-postgresql#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sails-postgresql.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sails-postgresql) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sails-postgresql.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sails-postgresql)
+# npmdoc-sails-postgresql
+
+#### api documentation for  [sails-postgresql (v0.11.4)](https://github.com/balderdashy/sails-postgresql#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sails-postgresql.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sails-postgresql) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sails-postgresql.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sails-postgresql)
+
 #### a postgreSQL adapter for Waterline and Sails.js
 
 [![NPM](https://nodei.co/npm/sails-postgresql.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/sails-postgresql)
