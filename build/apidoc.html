@@ -425,7 +425,23 @@
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  /**
+   * ADD ATTRIBUTE
+   *
+   * Adds a column to a Table
+   */
+
+  describe(&#x27;.<span class="apidocCodeKeywordSpan">addAttribute</span>()&#x27;, function() {
+
+    // Add a column to a table
+    it(&#x27;should add column color to the table&#x27;, function(done) {
+
+adapter.addAttribute(&#x27;test&#x27;, &#x27;test_addAttribute&#x27;, &#x27;color&#x27;, &#x27;string&#x27;, function(err, result
+) {
+  adapter.describe(&#x27;test&#x27;, &#x27;test_addAttribute&#x27;, function(err, result) {
+...</pre></li>
     </ul>
 
 
@@ -483,7 +499,23 @@
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+var sequel = new Sequel(_schema, _options);
+var _query;
+
+// Build a query for the specific query strategy
+try {
+  _query = sequel.<span class="apidocCodeKeywordSpan">count</span>(tableName, options);
+} catch(e) {
+  return cb(e);
+}
+
+client.query(_query.query[0], _query.values[0], function __COUNT__(err, result) {
+  if(err) return cb(handleQueryError(err));
+  if(!_.isArray(result.rows) || !result.rows.length) {
+...</pre></li>
     </ul>
 
 
@@ -563,7 +595,23 @@
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var sequel = new Sequel(schema, options);
+
+var incrementSequences = [];
+var query;
+
+// Build a query for the specific query strategy
+try {
+  query = sequel.<span class="apidocCodeKeywordSpan">create</span>(table, data);
+} catch(e) {
+  return cb(e);
+}
+
+// Loop through all the attributes being inserted and check if a sequence was used
+Object.keys(collection.schema).forEach(function(schemaKey) {
+  if(!utils.object.hasOwnProperty(collection.schema[schemaKey], &#x27;autoIncrement&#x27;)) return;
+...</pre></li>
     </ul>
 
 
@@ -677,7 +725,23 @@
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  /**
+   * CREATE EACH
+   *
+   * Insert an array of rows into a table
+   */
+
+  describe(&#x27;.<span class="apidocCodeKeywordSpan">createEach</span>()&#x27;, function() {
+
+    // Insert multiple records
+    it(&#x27;should insert multiple records&#x27;, function(done) {
+      adapter.createEach(&#x27;test&#x27;, &#x27;test_createEach&#x27;, [attributes, attributes], function(err, result) {
+
+// Check records were actually inserted
+support.Client(function(err, client, close) {
+...</pre></li>
     </ul>
 
 
@@ -719,7 +783,22 @@
   }, cb);
 
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (connectionObject.config.createSchemas === false) {return _define();}
+
+// If the schema name is &#x22;public&#x22;, just finish creating the table
+if (schemaName == &#x27;public&#x27;) {return _define();}
+
+// If not, attempt to create the schema first.  This will succeed if
+// the schema already exists.
+adapter.<span class="apidocCodeKeywordSpan">createSchema</span>(connectionName, table, schemaName, _define);
+
+function _define(errCreatingSchema) {
+
+  if (errCreatingSchema) {
+    cb(handleQueryError(errCreatingSchema));
+  }
+...</pre></li>
     </ul>
 
 
@@ -813,7 +892,22 @@
 
   }, describe);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  var Schema;
+
+  // Register The Collection
+  Adapter.registerCollection({ identity: &#x27;loadTest&#x27;, config: Config }, function(err) {
+    if(err) done(err);
+
+    // Define The Collection
+    Adapter.<span class="apidocCodeKeywordSpan">define</span>(&#x27;loadTest&#x27;, Fixture, function(err, schema) {
+      if(err) return done(err);
+      Schema = schema;
+      done();
+    });
+  });
+});
+...</pre></li>
     </ul>
 
 
@@ -896,7 +990,23 @@ Type\&#x22;, &#x22; +
             var key = column.Name.split(&#x27;_index_&#x27;)[1];
 
             // Look through query results and see if key e ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    config: connection,
+    collections: collections,
+    schema: schema
+  };
+
+  // Always call describe
+  async.map(Object.keys(collections), function(colName, cb){
+    self.<span class="apidocCodeKeywordSpan">describe</span>(connection.identity, colName, cb);
+  }, cb);
+},
+
+// Teardown
+teardown: function (conn, cb) {
+  if (typeof conn == &#x27;function&#x27;) {
+    cb = conn;
+...</pre></li>
     </ul>
 
 
@@ -942,7 +1052,23 @@ Type\&#x22;, &#x22; +
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+var sequel = new Sequel(_schema, _options);
+var query;
+
+// Build a query for the specific query strategy
+try {
+  query = sequel.<span class="apidocCodeKeywordSpan">destroy</span>(tableName, options);
+} catch(e) {
+  return cb(e);
+}
+
+// Run Query
+client.query(query.query, query.values, function __DELETE__(err, result) {
+  if(err) return cb(handleQueryError(err));
+...</pre></li>
     </ul>
 
 
@@ -985,7 +1111,23 @@ Type\&#x22;, &#x22; +
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  /**
+   * DROP
+   *
+   * Drop a table and all it&#x27;s records.
+   */
+
+  describe(&#x27;.<span class="apidocCodeKeywordSpan">drop</span>()&#x27;, function() {
+
+    // Drop the Test table
+    it(&#x27;should drop the table&#x27;, function(done) {
+
+adapter.drop(&#x27;test&#x27;, &#x27;test_drop&#x27;, function(err, result) {
+  adapter.describe(&#x27;test&#x27;, &#x27;test_drop&#x27;, function(err, result) {
+    should.not.exist(result);
+...</pre></li>
     </ul>
 
 
@@ -1045,7 +1187,23 @@ Type\&#x22;, &#x22; +
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ * from the specified collection.
+ *
+ * @param  {String}   collectionIdentity
+ * @param  {Object}   criteria
+ * @param  {Function} _cb
+ */
+$find: function (collectionName, criteria, _cb) {
+  return adapter.<span class="apidocCodeKeywordSpan">find</span>(conn, collectionIdentity, criteria, _cb, client);
+},
+
+/**
+ * Look up the name of the primary key field
+ * for the collection with the specified identity.
+ *
+ * @param  {String}   collectionIdentity
+...</pre></li>
     </ul>
 
 
@@ -1245,7 +1403,23 @@ var constraints = _.compact([
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    cb = data;
+    data = null;
+  }
+
+  spawnConnection(connectionName, function __QUERY__(client, cb) {
+
+    // Run query
+    if (data) client.<span class="apidocCodeKeywordSpan">query</span>(query, data, cb);
+    else client.query(query, cb);
+
+  }, cb);
+},
+
+// Describe a table
+describe: function(connectionName, table, cb) {
+...</pre></li>
     </ul>
 
 
@@ -1320,7 +1494,23 @@ var constraints = _.compact([
     self.describe(connection.identity, colName, cb);
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+describe(&#x27;adapter&#x27;, function() {
+
+/**
+ * Setup and Teardown
+ */
+
+before(function(done) {
+  support.<span class="apidocCodeKeywordSpan">registerConnection</span>([&#x27;test_define&#x27;, &#x27;user&#x27;], done);
+});
+
+after(function(done) {
+  support.Teardown(&#x27;test_define&#x27;, done);
+});
+
+// Attributes for the test table
+...</pre></li>
     </ul>
 
 
@@ -1349,7 +1539,22 @@ var constraints = _.compact([
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+  /**
+   * REMOVE ATTRIBUTE
+   *
+   * Drops a Column from a Table
+   */
+
+  describe(&#x27;.<span class="apidocCodeKeywordSpan">removeAttribute</span>()&#x27;, function() {
+
+    // Remove a column to a table
+    it(&#x27;should remove column field_2 from the table&#x27;, function(done) {
+
+adapter.removeAttribute(&#x27;test&#x27;, &#x27;test_removeAttribute&#x27;, &#x27;field_2&#x27;, function(err) {
+  adapter.describe(&#x27;test&#x27;, &#x27;test_removeAttribute&#x27;, function(err, result) {
+...</pre></li>
     </ul>
 
 
@@ -1424,7 +1629,23 @@ var constraints = _.compact([
   delete connections[conn];
   cb();
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+ */
+
+before(function(done) {
+  support.Setup(&#x27;test_drop&#x27;, done);
+});
+
+after(function(done) {
+  adapter.<span class="apidocCodeKeywordSpan">teardown</span>(&#x27;test&#x27;, done);
+});
+
+/**
+ * DROP
+ *
+ * Drop a table and all it&#x27;s records.
+ */
+...</pre></li>
     </ul>
 
 
@@ -1483,7 +1704,23 @@ var constraints = _.compact([
 
   }, cb);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+var sequel = new Sequel(_schema, _options);
+var query;
+
+// Build a query for the specific query strategy
+try {
+  query = sequel.<span class="apidocCodeKeywordSpan">update</span>(tableName, options, data);
+} catch(e) {
+  return cb(e);
+}
+
+// Run Query
+client.query(query.query, query.values, function __UPDATE__(err, result) {
+  if(err) return cb(handleQueryError(err));
+...</pre></li>
     </ul>
 
 
@@ -1542,7 +1779,24 @@ var constraints = _.compact([
 
   return _values;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        });
+
+        // Run Query
+        client.query(query.query, query.values, function __CREATE__(err, result) {
+if(err) return cb(handleQueryError(err));
+
+// Cast special values
+var values = processor.<span class="apidocCodeKeywordSpan">cast</span>(tableName, result.rows[0]);
+
+// Set Sequence value to defined value if needed
+if(incrementSequences.length === 0) return cb(null, values);
+
+function setSequence(item, next) {
+  var sequenceName = &#x22;&#x27;\&#x22;&#x22; + schemaName + &#x27;\&#x22;.\&#x22;&#x27; + tableName + &#x27;_&#x27; + item + &#
+x27;_seq&#x27; + &#x22;\&#x22;&#x27;&#x22;;
+  var sequenceValue = values[item];
+...</pre></li>
     </ul>
 
 
@@ -1638,7 +1892,22 @@ Processor.prototype.cast = function(table, values) {
 
   return indexes;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// Escape Table Name
+var tableName = utils.escapeName(table, schemaName);
+
+// Iterate through each attribute, building a query string
+var _schema = utils.buildSchema(definition);
+
+// Check for any Index attributes
+var indexes = utils.<span class="apidocCodeKeywordSpan">buildIndexes</span>(definition);
+
+// Build Query
+var query = &#x27;CREATE TABLE &#x27; + tableName + &#x27; (&#x27; + _schema + &#x27;)&#x27;;
+
+// Run Query
+client.query(query, function __DEFINE__(err, result) {
+...</pre></li>
     </ul>
 
 
@@ -1675,7 +1944,22 @@ Processor.prototype.cast = function(table, values) {
 
   return _.compact([ columns, constraints ]).join(&#x27;, &#x27;);
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  cb(handleQueryError(errCreatingSchema));
+}
+
+// Escape Table Name
+var tableName = utils.escapeName(table, schemaName);
+
+// Iterate through each attribute, building a query string
+var _schema = utils.<span class="apidocCodeKeywordSpan">buildSchema</span>(definition);
+
+// Check for any Index attributes
+var indexes = utils.buildIndexes(definition);
+
+// Build Query
+var query = &#x27;CREATE TABLE &#x27; + tableName + &#x27; (&#x27; + _schema + &#x27;)&#x27;;
+...</pre></li>
     </ul>
 
 
@@ -1694,7 +1978,22 @@ Processor.prototype.cast = function(table, values) {
   }
   return name;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        function _define(errCreatingSchema) {
+
+if (errCreatingSchema) {
+  cb(handleQueryError(errCreatingSchema));
+}
+
+// Escape Table Name
+var tableName = utils.<span class="apidocCodeKeywordSpan">escapeName</span>(table, schemaName);
+
+// Iterate through each attribute, building a query string
+var _schema = utils.buildSchema(definition);
+
+// Check for any Index attributes
+var indexes = utils.buildIndexes(definition);
+...</pre></li>
     </ul>
 
 
@@ -1789,7 +2088,23 @@ Processor.prototype.cast = function(table, values) {
 
   return normalized;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      result.rows.forEach(function(column) {
+        if(column.Column !== key) return;
+        column.indexed = true;
+      });
+    });
+
+    // Normalize Schema
+    var normalizedSchema = utils.<span class="apidocCodeKeywordSpan">normalizeSchema</span>(result.rows);
+
+    // Set Internal Schema Mapping
+    collection.schema = normalizedSchema;
+
+    cb(null, normalizedSchema);
+  });
+});
+...</pre></li>
     </ul>
 
 
